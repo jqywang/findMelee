@@ -46,7 +46,7 @@ class App extends React.Component {
         }
       })
         .then(() => {
-          axios.get('http:localhost:3000/listings', {params: {
+          axios.get('/listings', {params: {
             location: this.state.location
           }})
             .then(response => {
