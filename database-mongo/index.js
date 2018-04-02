@@ -11,21 +11,22 @@ db.once('open', function() {
   console.log('mongoose connected successfully');
 });
 
-var itemSchema = mongoose.Schema({
+var listingSchema = mongoose.Schema({
   quantity: Number,
   description: String
 });
 
-var Item = mongoose.model('Item', itemSchema);
+var Listing = mongoose.model('Listing', listingSchema);
 
-var selectAll = function(callback) {
-  Item.find({}, function(err, items) {
+var selectAll = function(location, callback) {
+  Listing.find({}, function(err, listings) {
     if(err) {
       callback(err, null);
     } else {
-      callback(null, items);
+      callback(null, listings);
     }
   });
 };
 
 module.exports.selectAll = selectAll;
+module.exports.listing = Listing;
